@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "animate.css": "^4.1.1",
+    "boxicons": "^2.1.4",
+    "react-router-dom": "^6.26.0",
+    "wow.js": "^1.2.2"
+  }
+}
