@@ -1,6 +1,25 @@
+/* Posts.css */
 #allpost {
+    position: relative;
     margin-top: -1070px;
+    /* Ensure that child elements like loader are positioned relative to this container */
 }
+
+/* Add this class to ensure loader is only positioned within the #allpost container */
+.allpost-loader {
+    position: absolute;
+    /* Ensures loader is positioned relative to #allpost */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    /* Ensure loader is above other content */
+}
+
 
 /* General styles for the entire page */
 .post-filter {

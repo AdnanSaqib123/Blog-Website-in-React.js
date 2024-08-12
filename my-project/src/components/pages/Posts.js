@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './Posts.css';
+import Loader from './Loader'; // Import the Loader component
 
 const Posts = () => {
     const [posts, setPosts] = useState([]);
     const [comments, setComments] = useState([]);
     const [todos, setTodos] = useState([]);
     const [popupType, setPopupType] = useState(null);
+    const [loading, setLoading] = useState(true); // Add loading state
 
     const postsApi = 'https://jsonplaceholder.typicode.com/posts?_limit=50';
     const commentsApi = 'https://jsonplaceholder.typicode.com/comments?postId=';
@@ -55,8 +57,10 @@ const Posts = () => {
                     publishedBy: getPublishedBy(index),
                 }));
                 setPosts(postsWithImages);
+                setLoading(false); // Set loading to false once posts are loaded
             } catch (error) {
                 console.error('Error fetching posts:', error);
+                setLoading(false); // Ensure loading is stopped even if there's an error
             }
         };
 
@@ -124,7 +128,7 @@ const Posts = () => {
             <div className="post-filter animate__animated wow animate__zoomIn">
                 <span className="filter-item active-filter" data-filter="all">Latest Posts</span>
             </div><br />
-
+            {loading && <Loader containerClassName="allpost-loader" />}
             <div className="post post-box container">
                 <div className="grid-container post-box" id="post-data-container">
                     {posts.map(post => (
@@ -181,4 +185,3 @@ const Posts = () => {
 }
 
 export default Posts;
-
